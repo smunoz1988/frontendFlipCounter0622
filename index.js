@@ -18,7 +18,6 @@ const counter = () => {
     decimal.innerHTML = countDecimal;
 };
 
-
 counter();
 
 setInterval(counter, 1000);
