@@ -1,32 +1,68 @@
 *, *::after, *::before {
     box-sizing: border-box;
+    font-size: 3rem;
+    color: #de4848;
 }
 
 .flipCard {
+    position: relative;
     display: inline-flex;
     flex-direction: column;
-    font-size: 7rem;
 
 }
 
-.top, .bottom {
+.top, 
+.bottom, 
+.flipCard.flip::after, 
+.flipCard.flip::before {
     height: 0.75em;
     line-height: 1;
-    padding: 0.5em;
+    padding: 0.25em;
+    overflow: hidden;
 }
 
-.top {
-    background-color: black;
-    color: blue;
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
+.top,
+.flipCard.flip::before {
+    background-color: #f7f7f7;
+    border-top-left-radius: 0.09em;
+    border-top-right-radius: 0.09em;
 }
 
-.bottom {
-    background-color: red;
-    color: yellow;
+.bottom,
+.flipCard.flip::after {
+    background-color: white;
     display: flex;
     align-items: flex-end;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.09em;
+    border-bottom-right-radius: 0.09em;
+}
+
+.flipCard.flip::before {
+    position: absolute;
+    content: "5";
+    width: 100%;
+    animation: flip-top 250ms ease-in;
+    transform-origin: bottom;
+}
+
+@keyframes flip-top {
+    100% {
+        transform: rotateX(90deg);
+    }
+}
+
+.flipCard.flip::after {
+    position: absolute;
+    bottom: 0;
+    content: "5";
+    width: 100%;
+    animation: flip-bottom 250ms ease-out 250ms;
+    transform-origin: top;
+    transform: rotateX(90deg);
+}
+
+@keyframes flip-bottom {
+    100% {
+        transform: rotateX(0deg);
+    }
 }
