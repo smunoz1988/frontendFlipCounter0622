@@ -1,15 +1,13 @@
-const countToDate = new Date().setHours(new Date().getHours() + 24)
-console.log('count', countToDate);
+const startTime = new Date()
+startTime.setHours(0, 0, 0, 0)
 let previousTimeBetweenDates
+
 setInterval(() => {
   const currentDate = new Date()
-  console.log('current', currentDate);
-  const timeBetweenDates = Math.ceil((countToDate - currentDate) / 1000)
-  console.log('time', timeBetweenDates);
+  const timeBetweenDates = Math.ceil((currentDate - startTime) / 1000)
   flipAllCards(timeBetweenDates)
 
   previousTimeBetweenDates = timeBetweenDates
-  console.log('previous', previousTimeBetweenDates);
 }, 250)
 
 function flipAllCards(time) {
@@ -30,18 +28,18 @@ function flip(flipCard, newNumber) {
   const bottomFlip = document.createElement("div")
   bottomFlip.classList.add("bottom-flip")
 
-  top.textContent = startNumber
+  topHalf.textContent = startNumber
   bottomHalf.textContent = startNumber
   topFlip.textContent = startNumber
   bottomFlip.textContent = newNumber
 
-  topFlip.addEventListener("animationstart", e => {
+  topFlip.addEventListener("animationstart", () => {
     topHalf.textContent = newNumber
   })
-  topFlip.addEventListener("animationend", e => {
+  topFlip.addEventListener("animationend", () => {
     topFlip.remove()
   })
-  bottomFlip.addEventListener("animationend", e => {
+  bottomFlip.addEventListener("animationend", () => {
     bottomHalf.textContent = newNumber
     bottomFlip.remove()
   })
