@@ -1,5 +1,7 @@
 const decimal = document.getElementById('decimal');
 const unit = document.getElementById('unit');
+const backUnit = document.getElementById('backUnit');
+const backDecimal = document.getElementById('backDecimal');
 let countUnit = -1;
 let countDecimal = 0;
 
@@ -15,7 +17,9 @@ const counter = () => {
         countDecimal = 0;
     }
     unit.innerHTML = countUnit;
+    backUnit.innerHTML = countUnit;
     decimal.innerHTML = countDecimal;
+    backDecimal.innerHTML = countDecimal;
 };
 
 counter();
