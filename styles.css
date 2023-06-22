@@ -39,9 +39,9 @@
 
 .flipCard.flip::before {
     position: absolute;
-    content: "5";
+    content: "1";
     width: 100%;
-    animation: flip-top 250ms ease-in;
+    animation: flip-top 1000ms ease-in 1000ms infinite;
     transform-origin: bottom;
 }
 
@@ -54,9 +54,10 @@
 .flipCard.flip::after {
     position: absolute;
     bottom: 0;
-    content: "5";
+    content: "2";
     width: 100%;
-    animation: flip-bottom 250ms ease-out 250ms;
+    animation: flip-bottom 1000ms ease-out 1000ms infinite;
+    background-color: yellow;
     transform-origin: top;
     transform: rotateX(90deg);
 }
